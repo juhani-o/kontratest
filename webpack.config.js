@@ -3,12 +3,15 @@
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
+
+const outputDir = "dist";
 
 module.exports = {
   entry: './src/game.js', // Sovelluksen pääsisääntulotiedosto
   output: {
     filename: 'bundle.js', // Kääntämisen tuottama tiedosto
-    path: path.resolve(__dirname, 'dist'), // Kääntämisen tulostiedostojen hakemisto
+    path: path.resolve(__dirname, outputDir), // Kääntämisen tulostiedostojen hakemisto
     clean: true, // Tyhjennä 'dist'-hakemisto ennen uuden paketin luontia
   },
   mode: 'production', // Aseta kääntämisen tila kehitykseen
@@ -49,12 +52,17 @@ module.exports = {
         </head>
         <body>
             <div id="app">
-                <canvas id="myCanvas" width="800" height="600"></canvas>
+                <canvas id="game" width="800" height="600"></canvas>
             </div>
             ${htmlWebpackPlugin.tags.bodyTags}
         </body>
         </html>
       `,
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: "src/assets", to: "assets"}
+      ],
     }),
   ],
   devServer: {
