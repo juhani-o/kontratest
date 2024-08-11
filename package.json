@@ -23,6 +23,6 @@
     "webpack-dev-server": "^5.0.4"
   },
   "dependencies": {
-    "kontra": "^9.0.0",
+    "kontra": "^10.0.0"
   }
 }
