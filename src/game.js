@@ -6,9 +6,10 @@ let { context } = init();
 
 load('assets/future.png', 'assets/kontra_future.json')
 .then(assets => {
-    let tileEngine = TileEngine(dataAssets['assets/kontra_future']);
-
+    const imageAssets = dataAssets['assets/kontra_future'];
+    let tileEngine = TileEngine(imageAssets);
     let sx = 1;
+    context.scale(4, 4);
     let loop = GameLoop({
       update: function() {
         tileEngine.sx += sx;
@@ -19,7 +20,6 @@ load('assets/future.png', 'assets/kontra_future.json')
       },
       render: function() {
         tileEngine.render();
-        console.log("Rendering :", tileEngine);
       }
     });
 
