@@ -49,6 +49,9 @@ module.exports = {
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Webpack App with Canvas</title>
+            <style>
+              html, body {  background-color: black; display: flex; justify-content: center; }
+            </style>
         </head>
         <body>
             <div id="app">
